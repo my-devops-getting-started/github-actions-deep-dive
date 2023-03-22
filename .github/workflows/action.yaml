@@ -34,8 +34,8 @@ jobs:
       - name: Upload artifacts
         uses: ./
         with:
-          aws_access_key_id: ${{ AKIAR4BATF7JZS5FNCY6 }}
-          aws_secret_access_key: ${{ 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 }}
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY_ID }}
           aws_region: us-east-1
           bucket: github-action-upload-test-1234
           scope: global
