@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-    needs: lint
     steps:
       - name: Check out code
         uses: actions/checkout@v2
