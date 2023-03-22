@@ -30,3 +30,14 @@ jobs:
         with:
           name: zipped-bundle
           path: ${{ github.sha }}.zip
+          
+      - name: Upload artifacts
+        uses: ./
+        with:
+          aws_access_key_id: ${{ AKIAR4BATF7JZS5FNCY6 }}
+          aws_secret_access_key: ${{ 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 }}
+          aws_region: us-east-1
+          bucket: github-action-upload-test-1234
+          scope: global
+          name: zipped-bundle
+          path:  ${{ github.sha }}.zip
