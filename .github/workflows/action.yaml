@@ -64,7 +64,7 @@ jobs:
       - name: download artifact
         uses: actions/download-artifact@v2
         with:
-          name: zippped-bundle
+          name: zipped-bundle
       - name: upload release asset
         uses: actions/upload-release-asset@v1
         env:
