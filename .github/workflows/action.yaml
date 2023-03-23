@@ -75,6 +75,22 @@ jobs:
           asset_name: source_code_libraries
           asset_content_type: application/zip
         
+  upload:
+    runs-on: ubuntu_latest
+    needs: build
+    steps:
+        - name: download artifact
+          uses: actions/download-artifact@v2
+          with:
+           name: zipped-bundle
+        - name: Upload files to s3
+          uses: roimor/aws-cli-action@v1
+          with:
+            args: s3 cp zipped-bundle s3://github-action-upload-test-1234/
+          env:
+           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           AWS_DEFAULT_REGION: us-east-1
           
        
          
