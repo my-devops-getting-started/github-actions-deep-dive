@@ -7,7 +7,7 @@ permissions:
     
 jobs:
   lint:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps: 
       - name: Check out code
         uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
             flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: lint
     steps:
       - name: Check out code
@@ -50,7 +50,7 @@ jobs:
     
 
   publish:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: create release
         uses: actions/create-release@v1
@@ -60,7 +60,7 @@ jobs:
           tag_name: ${{ github.run_number }}
           release_name: Release from ${{ github.run_number}}
           body: New relase for ${{ github.sha }}. Release Notes
-          prerelease: flase
+          prerelease: false
           draft: false
          
 
