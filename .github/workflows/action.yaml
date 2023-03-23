@@ -90,5 +90,5 @@ jobs:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         - name: Upload files to s3
-          run: aws s3 ${{ github.sha }}.zip s3://github-action-upload-test-1234/
+          run: aws s3 cp ${{ github.sha }}.zip s3://github-action-upload-test-1234/
 
