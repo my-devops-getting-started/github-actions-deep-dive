@@ -83,15 +83,13 @@ jobs:
           uses: actions/download-artifact@v2
           with:
             name: zipped-bundle
-        - name: Upload files to s3
-          uses: roimor/aws-cli-action@v1
+            
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v2
           with:
-            args: s3 cp zipped-bundle s3://github-action-upload-test-1234/
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: us-east-1
-          
-       
-         
+            aws-region: us-east-1
+            role-to-assume: arn:aws:iam::070317685329:user/github-actions-user
+            role-session-name: MySessionName
+        - name: Upload files to s3
+          run: aws s3 ${{ github.sha }}.zip s3://github-action-upload-test-1234/
 
