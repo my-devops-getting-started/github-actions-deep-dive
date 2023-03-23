@@ -88,7 +88,7 @@ jobs:
           uses: aws-actions/configure-aws-credentials@v2
           with:
             aws-region: us-east-1
-            role-to-assume: arn:aws:iam::070317685329:user/github-actions-user
+            role-to-assume: arn:aws:iam::070317685329:role/gihub-actions-role
             role-session-name: MySessionName
         - name: Upload files to s3
           run: aws s3 ${{ github.sha }}.zip s3://github-action-upload-test-1234/
