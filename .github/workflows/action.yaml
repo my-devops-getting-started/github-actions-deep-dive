@@ -105,7 +105,7 @@ jobs:
      - name: deploy Lambda function
        run: |
             aws lambda update-function-code \
-            --region sa-east-1 \
+            --region us-east-1 \
             --function-name my-lambda-function \
             --s3-bucket github-action-upload-test-1234 \
             --s3-key ${{ github.sha }}.zip \
